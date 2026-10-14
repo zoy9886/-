@@ -88,4 +88,34 @@ const sampleNotes=[{name:'給未來的實習生',text:'帶著好奇心來吧，�
  const notes=$('#stickyWall');if(notes)notes.addEventListener('click',e=>{let n=e.target.closest('.sticky');if(!n)return;n.classList.remove('flip-note');void n.offsetWidth;n.classList.add('flip-note')});
  if(!reduced&&'IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.chapter-top,.workbench,.journal-desk,.film-strip,.album-shelf,.envelope-stage,.guestbook').forEach(el=>{el.classList.add('reveal-on-scroll');observer.observe(el)});const mo=new MutationObserver(()=>{document.querySelectorAll('.page.active .reveal-on-scroll').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in-view')})});mo.observe(document.querySelector('main'),{attributes:true,subtree:true,attributeFilter:['class']});}
 })();
+</script><script>
+/* Emergency chapter routing: capture click before any older handlers */
+(function(){
+ const chapterIds=['home','work','stories','vlog','photos','join','notes'];
+ function navigate(id){
+  if(!chapterIds.includes(id))return;
+  chapterIds.forEach(name=>{
+   const page=document.getElementById(name);
+   if(page){const show=name===id;page.classList.toggle('active',show);page.style.setProperty('display',show?'block':'none','important');page.setAttribute('aria-hidden',String(!show));}
+  });
+  document.querySelectorAll('.nav [data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+  document.getElementById('mobileNav')?.classList.remove('open');
+  document.querySelectorAll('#'+id+' .reveal-on-scroll').forEach(e=>e.classList.add('in-view'));
+  try{history.replaceState(null,'','#'+id)}catch(e){}
+  window.scrollTo(0,0);
+ }
+ window.go=navigate;
+ document.addEventListener('click',function(e){
+  const btn=e.target.closest('button[onclick]');
+  if(!btn)return;
+  const attr=btn.getAttribute('onclick')||'';
+  const match=attr.match(/\bgo\(['"]([a-z]+)['"]\)/);
+  if(match){e.preventDefault();e.stopImmediatePropagation();navigate(match[1]);}
+ },true);
+ const css=document.createElement('style');
+ css.textContent='.home .spot{z-index:10!important;pointer-events:auto!important}.home:after{pointer-events:none!important}header{z-index:100!important}.nav button,.brand{pointer-events:auto!important}';
+ document.head.appendChild(css);
+ const initial=location.hash.substring(1);
+ if(chapterIds.includes(initial)&&initial!=='home')navigate(initial);
+})();
 </script></body></html>
