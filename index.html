@@ -440,23 +440,47 @@ const sampleNotes=[{name:'給未來的實習生',text:'帶著好奇心來吧，�
     targets[id]=section;
     section.querySelector('.cine-replay').addEventListener('click',()=>play(section));
   });
+  // Replay physical-object animations once on each chapter entry, not on every observer tick.
+  const activeScenes=new WeakSet();
   function play(section){
+    if(!section)return;
     section.classList.remove('scene-play');
     void section.offsetWidth;
     section.classList.add('scene-play');
   }
-  if('IntersectionObserver' in window){
-    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
-      if(entry.isIntersecting && entry.intersectionRatio>.16){play(entry.target);}
-    }),{threshold:[0,.16,.3],rootMargin:'0px 0px -8% 0px'});
-    Object.values(targets).forEach(s=>observer.observe(s));
-  }else{Object.values(targets).forEach(play)}
-  document.addEventListener('click',e=>{
-    const a=e.target.closest('[onclick^="go("], [data-page]');
-    if(!a)return;
-    const match=a.getAttribute('onclick')?.match(/go\(['"](\w+)['"]\)/);
-    const id=match?.[1]||a.dataset.page;
-    if(targets[id])setTimeout(()=>play(targets[id]),300);
+  function refreshScenes(){
+    Object.values(targets).forEach(section=>{
+      const rect=section.getBoundingClientRect();
+      const visible=rect.top<innerHeight*.75 && rect.bottom>innerHeight*.25;
+      if(visible && !activeScenes.has(section)){
+        activeScenes.add(section);
+        play(section);
+      }else if(!visible && activeScenes.has(section)){
+        activeScenes.delete(section);
+      }
+    });
+  }
+  let pending=false;
+  function scheduleRefresh(){
+    if(pending)return;
+    pending=true;
+    requestAnimationFrame(()=>{pending=false;refreshScenes();});
+  }
+  window.addEventListener('scroll',scheduleRefresh,{passive:true});
+  window.addEventListener('resize',scheduleRefresh,{passive:true});
+  window.addEventListener('hashchange',()=>setTimeout(scheduleRefresh,120));
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('[data-page], [onclick^="go("]');
+    if(!link)return;
+    const match=link.getAttribute('onclick')?.match(/go\\(['"](\\w+)['"]\\)/);
+    const id=link.dataset.page||match?.[1];
+    if(targets[id]){
+      // The smooth-scroll listener handles replay on arrival.
+      activeScenes.delete(targets[id]);
+      setTimeout(scheduleRefresh,420);
+    }
   },true);
+  requestAnimationFrame(scheduleRefresh);
+  setTimeout(scheduleRefresh,500);
 })();
 </script></body></html>
