@@ -341,47 +341,27 @@ main>section.page:not(#home){isolation:isolate}
 #photos .instant-desk.latest-cohort.printing .polaroid-card{animation:realPrintDrop 1.7s cubic-bezier(.2,.7,.2,1) both!important;animation-delay:calc(var(--print-i)*.45s)!important}
 #photos .instant-desk.latest-cohort .photo-wall{position:relative;z-index:2}
 @media(prefers-reduced-motion:reduce){#work.integrated-play .zone,#stories.integrated-play .real-book-cover,#photos .instant-desk.latest-cohort.printing .polaroid-card{animation-duration:.01ms!important}}
-</style><style id="fy-3d-gallery">
-/* Immersive perspective gallery integrated with the original cohort albums. */
-#gallery3d{position:relative;width:100%;min-height:570px;overflow:hidden;border-radius:22px;background:radial-gradient(ellipse at 50% 38%,#556d62 0%,#203e35 48%,#122b25 100%);color:#f4eee0;perspective:1100px;touch-action:pan-y;outline-offset:4px}
-#gallery3d .gallery-space{height:470px;position:relative;perspective:1100px;overflow:hidden}
-#gallery3d .photo-wall{position:absolute!important;inset:0!important;display:block!important;margin:0!important;transform-style:preserve-3d}
-#gallery3d .polaroid-card{position:absolute!important;top:49%;left:50%;width:clamp(180px,27vw,310px);height:clamp(250px,32vw,350px);padding:12px 12px 32px;border:9px solid #fffaf0;border-bottom-width:18px;border-radius:3px;background:#fffaf0;box-shadow:0 30px 48px #071c17a6;text-align:left;opacity:calc(1 - min(var(--g-depth),4)*.17);transform:translate(-50%,-50%) translateX(calc(var(--g-offset)*clamp(130px,22vw,245px))) translateZ(calc(var(--g-depth)*-155px)) rotateY(calc(var(--g-offset)*-22deg));transition:transform .75s cubic-bezier(.2,.75,.2,1),opacity .65s,box-shadow .5s;cursor:pointer;will-change:transform}
-#gallery3d .polaroid-card[aria-current="true"]{box-shadow:0 38px 70px #071c17cf}
-#gallery3d .polaroid-card .photo-image{width:100%;height:76%;aspect-ratio:auto;background:linear-gradient(145deg,#9aafa1,#d8d3b7 55%,#718e7f);font-size:65px}
-#gallery3d .polaroid-card span{font-size:12px;margin-top:13px;line-height:1.5;color:#465b50}
-#gallery3d .gallery-toolbar{position:relative;display:flex;align-items:center;justify-content:center;gap:22px;padding:6px 15px}
-#gallery3d .gallery-toolbar .btn{color:#f5ead5;border-color:#a3b1a6;background:#ffffff12}
-#gallery3d .gallery-hint{text-align:center;font-size:12px;letter-spacing:.08em;color:#e2e7d9b0;margin:14px 0 22px}
-@media(max-width:600px){#gallery3d{min-height:495px}#gallery3d .gallery-space{height:400px}#gallery3d .polaroid-card{width:210px;height:280px}#gallery3d .gallery-toolbar{gap:12px}}
-@media(prefers-reduced-motion:reduce){#gallery3d .polaroid-card{transition:none}}
-</style><style id="immersive-3d-runway">
-#photos .wrap{max-width:1400px}
-#photos .album-shelf{display:flex!important;flex-wrap:wrap;gap:12px;justify-content:center;margin:16px auto 30px}
-#photos .album{width:min(210px,44vw);min-height:94px;padding:10px;display:flex;align-items:center;gap:12px;text-align:left}
-#photos .album .album-cover{width:56px;min-width:56px;height:65px}
-#photos .album h3{font-size:14px;margin:0}
-#photos .album[aria-pressed=true]{outline:2px solid #ae9469;outline-offset:3px}
-#photos .gallery-kicker{text-align:center;font-size:11px;letter-spacing:.2em;color:#9c896c}
+</style><style id="real-gallery-css">
+#photos .wrap{max-width:1400px}#photos .album-shelf{display:flex!important;justify-content:center;flex-wrap:wrap;gap:14px;margin:20px auto 24px}
+#photos .album{width:min(220px,44vw);padding:12px;min-height:95px}#photos .album[aria-pressed=true]{outline:2px solid #b49a6f;outline-offset:3px}
+#photos .gallery-kicker{text-align:center;font-size:11px;letter-spacing:.2em;color:#9b8665}
 #photos #albumView>.section-title,#photos #albumView>.intro{text-align:center;max-width:none}
-#photos #galleryRunway{height:350vh;position:relative;margin-top:22px}
-#photos #gallery3d{position:sticky;top:66px;width:100%;height:calc(100vh - 76px);min-height:500px;overflow:hidden;border-radius:18px;background:radial-gradient(ellipse at 50% 45%,#496b5c,#152c25 65%,#091b18);perspective:1200px}
-#photos #gallery3d .gallery-space{height:calc(100% - 98px);position:relative;perspective:1200px;overflow:hidden;transform-style:preserve-3d}
-#photos #gallery3d .photo-wall{position:absolute!important;inset:0!important;display:block!important;transform-style:preserve-3d;transform:none!important}
-#photos #gallery3d .polaroid-card{position:absolute!important;top:50%;left:50%;width:clamp(190px,24vw,300px);height:clamp(250px,31vw,370px);padding:12px 12px 30px;opacity:0;transform-style:preserve-3d;will-change:transform,opacity,filter;transition:none!important;animation:none!important;backface-visibility:hidden;pointer-events:none}
-#photos #gallery3d .polaroid-card.gallery-near{pointer-events:auto}
-#photos #gallery3d .polaroid-card .photo-image{height:76%;aspect-ratio:auto}
-#photos #gallery3d .gallery-toolbar{position:relative;z-index:5;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px}
-#photos #gallery3d .gallery-toolbar .btn{color:#f9f2e5;border:1px solid #a7b8aa;background:#ffffff15}
-#photos #gallery3d .gallery-hint{position:relative;z-index:5;text-align:center;color:#f3eaddbb;font-size:12px;margin:9px}
-@media(max-width:600px){#photos #gallery3d{top:60px;height:calc(100dvh - 65px);min-height:440px}#photos #gallery3d .polaroid-card{width:200px;height:270px}}
-@media(prefers-reduced-motion:reduce){#photos #galleryRunway{height:120vh}}
+#photos #galleryRunway{height:380vh;position:relative;margin-top:22px}
+#photos #gallery3d{position:sticky;top:65px;height:calc(100dvh - 75px);min-height:460px;overflow:hidden;border-radius:16px;background:#10271f;perspective:none}
+#photos #threeCanvasHost{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;perspective:none}
+#photos #threeCanvasHost canvas{display:block;width:100%;height:100%;touch-action:pan-y}
+#photos #photoWall{display:none!important}
+#photos #gallery3d .gallery-toolbar{position:absolute;bottom:40px;left:0;right:0;z-index:3;display:flex;justify-content:center;align-items:center;gap:14px;background:none}
+#photos #gallery3d .gallery-toolbar .btn{color:#fff5e4;background:#10271fba;border:1px solid #aab8ab}
+#photos #gallery3d .gallery-toolbar span{color:#fff5e4}
+#photos #gallery3d .gallery-hint{position:absolute;bottom:8px;left:0;right:0;text-align:center;z-index:3;color:#fff9e5b8;font-size:12px}
+@media(max-width:600px){#photos #gallery3d{top:58px;height:calc(100dvh - 64px)}}
 </style></head><body><header><button class="brand" onclick="go('home')"><span class="symbol">◇</span><span>豐譽實習探索誌<small>C&C INTERNSHIP EXPLORER</small></span></button><nav class="nav" id="nav"></nav><button class="menu" onclick="toggleMenu()" aria-label="開啟選單">☰ 選單</button><div class="mobile-nav" id="mobileNav"></div></header><main>
 <section id="home" class="page active"><div class="home"><img class="desk" src="assets/desk.png" alt="建築工作桌上的藍圖、日記、相機、照片、信封與便條紙"><button class="spot s1" onclick="go('work')"><span>現場探索</span></button><button class="spot s2" onclick="go('stories')"><span>現場故事</span></button><button class="spot s3" onclick="go('vlog')"><span>實習日常 Vlog</span></button><button class="spot s4" onclick="go('photos')"><span>實習相簿</span></button><button class="spot s5" onclick="go('join')"><span>實習招募</span></button><button class="spot s6" onclick="go('notes')"><span>留下一頁</span></button><div class="home-hint">點擊桌上的物件，翻開故事 ↗</div><div class="mobile-home"><div class="eyebrow">C&C INTERNSHIP EXPLORER</div><h1 class="chapter-title">豐譽<br>實習探索誌</h1><p class="intro">翻開日記，探索那些課本以外的現場故事。</p><div class="mobile-cover"></div><div class="mobile-grid" id="mobileGrid"></div></div></div></section>
 <section id="work" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 01 · BLUEPRINT</div><h1 class="chapter-title">同一座工地，<br>不只一種視角。</h1><p class="intro">施工、品管、職安、規劃。四種專業，四種觀察現場的方法。選一個區域，展開你的工程藍圖。</p></div><div class="chapter-index">01</div></div><div class="workbench"><div class="plan"><div class="plan-grid" id="zones"></div></div></div><div class="blueprint-detail" id="workDetail" aria-live="polite"></div><p class="footnote">＊各組工作內容為體驗方向示意，實際任務會依工程階段、工地安排及帶領人員調整。</p><div class="next"><button onclick="go('home')">← 返回探索桌</button><button onclick="go('stories')">下一章 · 現場故事 →</button></div></div></section>
 <section id="stories" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 02 · FIELD NOTES</div><h1 class="chapter-title">現場故事，<br>寫在日記裡。</h1><p class="intro">第一次走進現場的緊張、逐漸理解專業的驚喜，還有那些沒寫進工作說明的日常。翻一頁，聽一段故事。</p></div><div class="chapter-index">02</div></div><div class="journal-desk"><div class="book" id="book"><button type="button" class="real-book-cover" id="realBookCover" aria-label="翻開日記" onclick="openRealDiary()"><span>FIELD JOURNAL<small>C&C · 2026 SUMMER</small><em>點擊翻開日記 ↗</em></span></button><div class="leaf"><div class="eyebrow">C&C · SUMMER FIELD JOURNAL</div><div class="journal-photo" id="diaryIcon">✎</div><div class="hand" id="diaryCaption"></div><p class="notice">現場觀察 · 實習紀錄</p></div><div class="leaf"><div class="eyebrow" id="diaryIndex"></div><h2 id="diaryTitle" class="section-title"></h2><p id="diaryText" class="journal-body"></p><p class="footnote">＊目前使用編輯示意文字，正式刊登需替換為取得同意的實習生真實分享。</p></div></div><div class="page-control"><button class="btn" onclick="flip(-1)" id="prevDiary">← 上一頁</button><span id="pageNum"></span><button class="btn" onclick="flip(1)" id="nextDiary">下一頁 →</button></div></div><div class="next"><button onclick="go('work')">← 現場探索</button><button onclick="go('vlog')">下一章 · 實習日常 Vlog →</button></div></div></section>
 <section id="vlog" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 03 · VIDEO DIARY</div><h1 class="chapter-title">今天，工地<br>發生了什麼？</h1><p class="intro">工作有認真的一面，也有忍不住笑出來的瞬間。把鏡頭交給實習生，看看他們眼中的每一天。</p></div><div class="chapter-index">03</div></div><div class="film-strip"><div class="feature-screen"><button class="play" onclick="showVideo(0)" aria-label="觀看實習生快問快答">▶</button></div><div><div class="eyebrow">FEATURED · 2026 SUMMER</div><h2 class="section-title">實習生快問快答</h2><p class="intro">工地裡最常聽到的一句話？實習後最大的改變？那些意想不到的答案，都在這裡。</p><button class="btn" onclick="showVideo(0)">打開影像日誌 ↗</button></div></div><div class="category" id="videoFilters"></div><div class="film-grid" id="filmGrid"></div><p class="footnote">＊目前為影片目錄示意，尚未嵌入正式影片。可於程式中的影片資料填入已授權的 YouTube 網址。</p><div class="next"><button onclick="go('stories')">← 現場故事</button><button onclick="go('photos')">下一章 · 實習相簿 →</button></div></div></section>
-<section id="photos" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 04 · PHOTO JOURNAL</div><h1 class="chapter-title">那些被留下的瞬間。</h1><p class="intro">每一梯次，都有一段自己的故事。往下滑，讓鏡頭帶你走進實習的每個瞬間；也可以切換不同梯次的故事。</p></div><div class="chapter-index">04</div></div><div id="albumList"><div class="album-shelf" id="albumShelf"></div></div><div id="albumView"><div class="gallery-kicker">3D PHOTOGRAPHY · SCROLL TO EXPLORE</div><h2 class="section-title" id="albumHeading"></h2><p class="intro" id="albumDesc"></p><div class="gallery-scroll-runway" id="galleryRunway"><div class="gallery-3d" id="gallery3d" tabindex="0" aria-label="3D 攝影藝廊，可左右拖曳或使用方向鍵切換照片"><div class="gallery-space"><div class="photo-wall" id="photoWall"></div></div><div class="gallery-toolbar"><button class="btn" type="button" onclick="moveGallery(-1)" aria-label="上一張照片">← 上一張</button><span id="galleryCount">01 / 06</span><button class="btn" type="button" onclick="moveGallery(1)" aria-label="下一張照片">下一張 →</button></div><p class="gallery-hint">往下滑，鏡頭穿梭照片 · 也可左右拖曳、點擊閱讀</p></div></div><p class="footnote">＊相片為位置示意，請替換為經授權的實習活動照片。</p></div><div class="next"><button onclick="go('vlog')">← 實習日常 Vlog</button><button onclick="go('join')">下一章 · 實習招募 →</button></div></div></section>
+<section id="photos" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 04 · PHOTO JOURNAL</div><h1 class="chapter-title">那些被留下的瞬間。</h1><p class="intro">每一梯次，都有一段自己的故事。往下滑，讓鏡頭帶你走進實習的每個瞬間；也可以切換不同梯次的故事。</p></div><div class="chapter-index">04</div></div><div id="albumList"><div class="album-shelf" id="albumShelf"></div></div><div id="albumView"><div class="gallery-kicker">3D PHOTOGRAPHY · SCROLL TO EXPLORE</div><h2 class="section-title" id="albumHeading"></h2><p class="intro" id="albumDesc"></p><div class="gallery-scroll-runway" id="galleryRunway"><div class="gallery-3d" id="gallery3d" tabindex="0" aria-label="3D 攝影藝廊，可左右拖曳或使用方向鍵切換照片"><div class="gallery-space" id="threeCanvasHost"><div class="photo-wall" id="photoWall"></div></div><div class="gallery-toolbar"><button class="btn" type="button" onclick="moveGallery(-1)" aria-label="上一張照片">← 上一張</button><span id="galleryCount">01 / 06</span><button class="btn" type="button" onclick="moveGallery(1)" aria-label="下一張照片">下一張 →</button></div><p class="gallery-hint">往下滑，鏡頭穿梭照片 · 也可左右拖曳、點擊閱讀</p></div></div><p class="footnote">＊相片為位置示意，請替換為經授權的實習活動照片。</p></div><div class="next"><button onclick="go('vlog')">← 實習日常 Vlog</button><button onclick="go('join')">下一章 · 實習招募 →</button></div></div></section>
 <section id="join" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 05 · AN INVITATION</div><h1 class="chapter-title">下一篇故事，<br>換你來寫。</h1><p class="intro">如果你也想走進現場，這裡有一封留給你的邀請函。</p></div><div class="chapter-index">05</div></div><div class="envelope-stage"><div class="eyebrow">A LETTER FOR YOUR NEXT CHAPTER</div><h2 class="section-title">點擊信封，拆開邀請</h2><button class="envelope" id="envelope" onclick="openLetter()" aria-label="打開實習招募邀請函"><span class="seal">◇</span></button><div class="letter" id="letter"><div class="eyebrow">DEAR FUTURE INTERN</div><h2>歡迎，未來的現場夥伴。</h2><p class="intro">每一段實習，都從好奇開始。這封信整理了你可能想知道的事，也留了一個保持聯繫的位置。</p><div class="letter-info"><div><b>實習期間</b>依當期公告</div><div><b>實習地點</b>依當期工程處及工地安排</div><div><b>申請資格</b>依當期實習招募條件</div><div><b>實習待遇</b>依當期正式招募資訊</div></div><p class="notice">正式招募資訊與申請連結尚待設定，請勿將本頁視為當期職缺公告。</p><h3 class="section-title">還在了解？先留下聯絡資訊</h3><p class="intro">以下表單目前僅供測試介面，尚未連接資料接收系統。</p><form class="lead" onsubmit="demoForm(event)"><label class="field">姓名 *<input required name="name" placeholder="你的姓名"></label><label class="field">電子郵件 *<input required name="email" type="email" placeholder="example@email.com"></label><label class="field">學校<input name="school" placeholder="就讀學校"></label><label class="field">科系<input name="department" placeholder="就讀科系"></label><label class="field">目前年級<select name="grade"><option>請選擇</option><option>大一</option><option>大二</option><option>大三</option><option>大四</option><option>研究所</option><option>其他</option></select></label><div class="field">感興趣的方向<div class="checks"><label><input type="checkbox">施工</label><label><input type="checkbox">品管</label><label><input type="checkbox">職安</label><label><input type="checkbox">規劃</label></div></div><label class="field wide">想對我們說的話<textarea rows="3" placeholder="你想了解什麼？"></textarea></label><label class="field wide"><span><input required type="checkbox"> 我了解此為測試表單，目前不會傳送或儲存資料。</span></label><div class="field wide"><button class="btn solid" type="submit">測試填寫完成 →</button></div></form></div></div><div class="next"><button onclick="go('photos')">← 實習相簿</button><button onclick="go('notes')">下一章 · 留下一頁 →</button></div></div></section>
 <section id="notes" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 06 · LEAVE A NOTE</div><h1 class="chapter-title">故事讀到這裡，<br>留下一頁給你。</h1><p class="intro">有問題、有感想，或只是想跟未來的自己說一句話，都可以先寫在這張便條紙上。</p></div><div class="chapter-index">06</div></div><div class="guestbook"><div><div class="eyebrow">THE MESSAGE WALL</div><h2 class="section-title">桌上的留言便條</h2><div class="sticky-wall" id="stickyWall"></div></div><div class="note-form"><div class="eyebrow">WRITE YOUR NOTE</div><h2>寫下一張便條</h2><form onsubmit="demoNote(event)"><label class="field">暱稱<input required id="noteName" maxlength="25" placeholder="怎麼稱呼你？"></label><label class="field">留言內容<textarea required id="noteText" maxlength="240" rows="6" placeholder="你想留下什麼話？"></textarea></label><button class="btn solid" type="submit">貼上便條紙 →</button></form><p class="footnote">＊目前是前端互動示意。測試留言只會暫時顯示在你的畫面，不會公開發佈、永久儲存或傳送給人資。正式上線前需串接審核與回覆機制。</p></div></div><div class="next"><button onclick="go('join')">← 實習招募</button><button onclick="go('home')">回到探索桌 ↗</button></div></div></section></main><footer>C&C INTERNSHIP EXPLORER · 豐譽實習探索誌　｜　網站互動設計預覽版</footer><div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="內容預覽" onclick="if(event.target===this)closeDialog()"><div class="dialog"><button class="close" onclick="closeDialog()" aria-label="關閉">×</button><div class="dialog-visual" id="dialogVisual"></div><h2 id="dialogTitle"></h2><p id="dialogText"></p></div></div><script>
 const chapters=[['work','現場探索'],['stories','現場故事'],['vlog','實習日常 Vlog'],['photos','實習相簿'],['join','實習招募'],['notes','留下一頁']];function go(id){const target=document.getElementById(id);if(!target||!target.classList.contains('page'))return;document.querySelectorAll('.nav button').forEach(e=>e.classList.toggle('active',e.dataset.page===id));document.getElementById('mobileNav')?.classList.remove('open');target.scrollIntoView({behavior:'smooth',block:'start'});if(location.hash!=='#'+id)history.replaceState(null,'','#'+id);if(id==='work'||id==='stories'){target.classList.remove('integrated-play');void target.offsetWidth;target.classList.add('integrated-play');if(id==='stories')document.getElementById('book')?.classList.add('book-open')}}function toggleMenu(){document.getElementById('mobileNav').classList.toggle('open')}document.getElementById('nav').innerHTML=chapters.map(([id,t])=>`<button data-page="${id}" onclick="go('${id}')">${t}</button>`).join('');document.getElementById('mobileNav').innerHTML=chapters.map(([id,t])=>`<button onclick="go('${id}')">${t}</button>`).join('');document.getElementById('mobileGrid').innerHTML=chapters.map(([id,t],i)=>`<button onclick="go('${id}')"><span>0${i+1} / CHAPTER</span>${t} ↗</button>`).join('');
@@ -397,27 +377,11 @@ const teams=[{title:'施工',en:'CONSTRUCTION',sub:'讓圖面上的想像，成�
 }renderTeams();
 const diaries=[{title:'第一次走進工地',icon:'⌁',caption:'「原來工程現場，比想像中更有秩序。」',text:'剛開始還不太知道自己能做什麼，只能努力記住大家說的每個專有名詞。\n\n慢慢跟著學長姐走過現場，才發現一棟建築背後，有好多課本裡看不到的細節。'},{title:'有問題，就勇敢問',icon:'✎',caption:'「有人願意教，學習就有了方向。」',text:'有時候一個看似簡單的問題，背後其實連著好幾個工序。\n\n跟著學長姐重新看圖、回到現場確認，才開始理解：實習不是什麼都要會，而是學會怎麼觀察與提問。'},{title:'開始想像未來',icon:'◇',caption:'「從認識工作，到開始想像自己的位置。」',text:'實習結束前再回頭看，最不一樣的也許不是學會了多少名詞。\n\n而是原本模糊的職涯方向，開始有了真實的畫面。'}];let diary=0;function renderDiary(){let d=diaries[diary];document.getElementById('diaryIcon').textContent=d.icon;document.getElementById('diaryCaption').textContent=d.caption;document.getElementById('diaryIndex').textContent='ENTRY 0'+(diary+1)+' / 2026 SUMMER';document.getElementById('diaryTitle').textContent=d.title;document.getElementById('diaryText').textContent=d.text;document.getElementById('pageNum').textContent=`0${diary+1} / 0${diaries.length}`;document.getElementById('prevDiary').disabled=diary===0;document.getElementById('nextDiary').disabled=diary===diaries.length-1}function flip(d){let n=diary+d;if(n<0||n>=diaries.length)return;let b=document.getElementById('book');b.classList.add('turning');setTimeout(()=>{diary=n;renderDiary()},190);setTimeout(()=>b.classList.remove('turning'),460)}renderDiary();
 const videos=[{title:'實習生快問快答',category:'快問快答',icon:'▶',desc:'從工地日常到最真實的回答'},{title:'我的工地一天',category:'工作日常',icon:'▣',desc:'跟著鏡頭走過一天'},{title:'實習後的改變',category:'人物訪談',icon:'✳',desc:'重新認識工作與自己'},{title:'現場小花絮',category:'工作日常',icon:'◈',desc:'那些意想不到的小瞬間'},{title:'學長姐怎麼說',category:'人物訪談',icon:'✎',desc:'從帶領者視角看實習'},{title:'我們的交流日',category:'工作日常',icon:'☼',desc:'一起走出自己的工地'}];let videoFilter='全部';function renderVideos(){let cats=['全部','快問快答','工作日常','人物訪談'];document.getElementById('videoFilters').innerHTML=cats.map(c=>`<button class="${videoFilter===c?'active':''}" onclick="videoFilter='${c}';renderVideos()">${c}</button>`).join('');document.getElementById('filmGrid').innerHTML=videos.map((v,i)=>({...v,i})).filter(v=>videoFilter==='全部'||v.category===videoFilter).map(v=>`<button class="film" onclick="showVideo(${v.i})"><div class="still">${v.icon}</div><strong>${v.title}</strong><small>${v.category} · ${v.desc}</small></button>`).join('')}renderVideos();function showVideo(i){let v=videos[i];showDialog(v.title,'影片尚未接入。正式版可將這裡改為 YouTube 嵌入播放器，並搭配已授權的封面與說明。',v.icon)}
-const albums=[{title:'2026 暑期實習',sub:'SUMMER INTERNSHIP',desc:'從初次進場、現場學習，到各地交流的夏日記錄。',photos:['初次走進現場','跟著學長姐學習','工地裡的日常','跨工地交流','參訪與分享','實習的最後一天']},{title:'2026 學期實習',sub:'SEMESTER INTERNSHIP',desc:'用更長的時間，陪伴一段工程與自己的成長。',photos:['學期的起點','每天的現場','學習筆記','團隊合作','逐漸上手','留下合照']}];document.getElementById('albumShelf').innerHTML=albums.map((a,i)=>`<button class="album" onclick="openAlbum(${i})"><div class="album-cover"><b>${i===0?'夏':'學'}</b></div><h3>${a.title} ↗</h3><small>${a.sub}</small></button>`).join('');let galleryIndex=0,galleryPointerX=null;
-function updateGallery(){
- const root=document.getElementById('photoWall'),cards=[...root.children],n=cards.length;if(!n)return;
- cards.forEach((el,i)=>{
-  let d=i-galleryIndex;if(d>n/2)d-=n;if(d< -n/2)d+=n;
-  el.style.setProperty('--g-offset',d);
-  el.style.setProperty('--g-depth',Math.abs(d));
-  el.style.zIndex=String(30-Math.abs(d));
-  el.setAttribute('aria-current',d===0?'true':'false');
-  el.tabIndex=d===0?0:-1;
- });
- document.getElementById('galleryCount').textContent=String(galleryIndex+1).padStart(2,'0')+' / '+String(n).padStart(2,'0');
-}
-function moveGallery(delta){const n=document.getElementById('photoWall').children.length;if(!n)return;galleryIndex=(galleryIndex+delta+n)%n;updateGallery()}
-function openAlbum(i){
- window.currentAlbumIndex=i;const a=albums[i];document.getElementById('albumList').hidden=false;document.getElementById('albumView').hidden=false;
- document.getElementById('albumHeading').textContent=a.title;document.getElementById('albumDesc').textContent=a.desc;
- document.getElementById('photoWall').innerHTML=a.photos.map((p,j)=>`<button type="button" class="polaroid-card" onclick="galleryPhotoClick(${j})"><div class="photo-image">${['▧','◇','✳','⌁','▤','☼'][j%6]}</div><span>PHOTO 0${j+1} / ${p}</span></button>`).join('');
- galleryIndex=0;updateGallery();document.querySelectorAll('#albumShelf .album').forEach((b,j)=>b.setAttribute('aria-pressed',String(j===i)));const g=document.getElementById('gallery3d');g.classList.remove('gallery-entered');void g.offsetWidth;g.classList.add('gallery-entered');
-}
-function galleryPhotoClick(i){if(i!==galleryIndex){galleryIndex=i;updateGallery();return;}const p=albums[window.currentAlbumIndex||0].photos[i];showDialog(p,'此處預留經授權的實習活動照片與現場故事。','▧')}
+const albums=[{title:'2026 暑期實習',sub:'SUMMER INTERNSHIP',desc:'從初次進場、現場學習，到各地交流的夏日記錄。',photos:['初次走進現場','跟著學長姐學習','工地裡的日常','跨工地交流','參訪與分享','實習的最後一天']},{title:'2026 學期實習',sub:'SEMESTER INTERNSHIP',desc:'用更長的時間，陪伴一段工程與自己的成長。',photos:['學期的起點','每天的現場','學習筆記','團隊合作','逐漸上手','留下合照']}];document.getElementById('albumShelf').innerHTML=albums.map((a,i)=>`<button class="album" onclick="openAlbum(${i})"><div class="album-cover"><b>${i===0?'夏':'學'}</b></div><h3>${a.title} ↗</h3><small>${a.sub}</small></button>`).join('');let galleryIndex=0;
+function updateGallery(){window.fyGallery?.focus(galleryIndex)}
+function moveGallery(d){window.fyGallery?.move(d)}
+function openAlbum(i){window.currentAlbumIndex=i;const a=albums[i];document.getElementById('albumHeading').textContent=a.title;document.getElementById('albumDesc').textContent=a.desc;document.querySelectorAll('#albumShelf .album').forEach((b,j)=>b.setAttribute('aria-pressed',String(j===i)));window.fyGallery?.setAlbum(i)}
+function galleryPhotoClick(i){showDialog(albums[window.currentAlbumIndex||0].photos[i],'此處預留經授權的實習活動照片與現場故事。','▧')}
 function closeAlbum(){document.getElementById('albumList').hidden=false;document.getElementById('albumView').hidden=false;document.getElementById('albumList').scrollIntoView({behavior:'smooth'})}function openLetter(){document.getElementById('envelope').classList.add('open');document.getElementById('letter').classList.add('open');setTimeout(()=>document.getElementById('letter').scrollIntoView({behavior:'smooth',block:'start'}),180)}function demoForm(e){e.preventDefault();showDialog('填寫介面測試完成','目前沒有後端服務，因此資料並未傳送或儲存。正式收件前需要串接表單系統與個資告知內容。','✉')}
 const sampleNotes=[{name:'給未來的實習生',text:'帶著好奇心來吧，很多答案要走進現場才找得到。',reply:'— 探索誌編輯示意'},{name:'一位正在探索方向的同學',text:'原來工程工作有這麼多不同的面向！',reply:''},{name:'留給自己的話',text:'希望下一次翻開這本探索誌時，我也有自己的故事。',reply:''}];let localNotes=[];function renderNotes(){document.getElementById('stickyWall').innerHTML=[...sampleNotes,...localNotes].map((n,i)=>`<div class="sticky" style="--angle:${i%2?2:-2}deg"><strong>${escapeHtml(n.name)}</strong><div>${escapeHtml(n.text)}</div>${n.reply?`<div class="reply">${escapeHtml(n.reply)}</div>`:''}</div>`).join('')}function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function demoNote(e){e.preventDefault();localNotes.push({name:document.getElementById('noteName').value,text:document.getElementById('noteText').value,reply:'（僅在此畫面暫時顯示）'});renderNotes();e.target.reset();document.getElementById('stickyWall').scrollIntoView({behavior:'smooth'})}renderNotes();function showDialog(title,desc,icon){document.getElementById('dialogTitle').textContent=title;document.getElementById('dialogText').textContent=desc;document.getElementById('dialogVisual').textContent=icon;document.getElementById('overlay').classList.add('open')}function closeDialog(){document.getElementById('overlay').classList.remove('open')}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDialog();if(document.getElementById('stories').classList.contains('active')&&e.target.tagName!=='INPUT'){if(e.key==='ArrowRight')flip(1);if(e.key==='ArrowLeft')flip(-1)}});let initial=location.hash.slice(1);if(document.getElementById(initial)&&initial!=='home')go(initial);
 
@@ -483,71 +447,37 @@ const sampleNotes=[{name:'給未來的實習生',text:'帶著好奇心來吧，�
  }
  window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);requestAnimationFrame(update);
 })();
-</script><script id="gallery-3d-interactions">
-(function(){
-const root=document.getElementById('gallery3d');if(!root)return;
-let start=null;
-root.addEventListener('pointerdown',e=>{if(e.target.closest('.gallery-toolbar'))return;start={x:e.clientX,y:e.clientY};});
-root.addEventListener('pointerup',e=>{if(!start)return;const dx=e.clientX-start.x,dy=e.clientY-start.y;start=null;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)){moveGallery(dx<0?1:-1);root.dataset.swiped='yes';setTimeout(()=>delete root.dataset.swiped,100)}});
-root.addEventListener('click',e=>{if(root.dataset.swiped){e.stopPropagation();e.preventDefault()}},true);
-root.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();moveGallery(e.key==='ArrowRight'?1:-1)}});
-})();
-</script><script id="real-scroll-camera">
-(function(){
-const runway=document.getElementById('galleryRunway'),stage=document.getElementById('gallery3d'),wall=document.getElementById('photoWall');
-if(!runway||!stage||!wall)return;
-let raf=0,started=false,dragStart=null,overrideUntil=0;
-const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
-const smooth=t=>t*t*(3-2*t);
-function ensure(){
- if(started)return;
- started=true;
- // The gallery exists in the scroll flow immediately, without opening an album.
- openAlbum(0);
-}
-function render(){
- raf=0;
- const rect=runway.getBoundingClientRect(),span=Math.max(1,rect.height-innerHeight);
- const progress=clamp(-rect.top/span,0,1);
- if(rect.top<innerHeight*.9&&rect.bottom>0)ensure();
- if(!started)return;
- const cards=[...wall.querySelectorAll('.polaroid-card')],n=cards.length;if(!n)return;
- const camera=progress*(n-1);
- const isManual=Date.now()<overrideUntil;
- const focal=isManual?galleryIndex:Math.round(camera);
- if(!isManual){galleryIndex=focal;document.getElementById('galleryCount').textContent=String(focal+1).padStart(2,'0')+' / '+String(n).padStart(2,'0')}
- const w=stage.clientWidth,scaleX=clamp(w/1050,.52,1.3);
- cards.forEach((card,i)=>{
-   // Each photograph has a fixed location in a deep, staggered 3D corridor.
-   const t=i-(isManual?galleryIndex:camera);
-   const depth=t*-560;
-   const side=Math.sin(i*2.399)*270*scaleX;
-   const vertical=Math.cos(i*1.8)*115;
-   const turn=Math.sin(i*1.9)*16-t*3.5;
-   const distance=Math.abs(t);
-   const alpha=clamp(1-distance*.30,0,1);
-   const zoom=clamp(1-distance*.11,.52,1);
-   card.style.transform='translate(-50%,-50%) translate3d('+side.toFixed(1)+'px,'+vertical.toFixed(1)+'px,'+depth.toFixed(1)+'px) rotateY('+turn.toFixed(1)+'deg) rotateZ('+(Math.sin(i*3.1)*7).toFixed(1)+'deg) scale('+zoom.toFixed(3)+')';
-   card.style.opacity=alpha.toFixed(3);
-   card.style.filter='blur('+clamp(distance*1.6,0,8).toFixed(1)+'px)';
-   card.style.zIndex=String(100-Math.round(distance*10));
-   card.classList.toggle('gallery-near',distance<.75);
-   card.setAttribute('aria-current',String(i===focal));
-   card.tabIndex=i===focal?0:-1;
- });
- const drift=Math.sin(progress*Math.PI*2)*8;
- wall.style.setProperty('perspective-origin',(50+drift)+'% 50%');
- stage.style.background='radial-gradient(ellipse at '+(50+drift).toFixed(1)+'% 45%,#527465,#152c25 65%,#091b18)';
-}
-function tick(){if(!raf)raf=requestAnimationFrame(render)}
-window.addEventListener('scroll',tick,{passive:true});
-window.addEventListener('resize',tick);
-const originalMove=window.moveGallery;
-window.moveGallery=function(d){ensure();overrideUntil=Date.now()+4000;originalMove(d);tick()};
-stage.addEventListener('pointerdown',e=>{dragStart={x:e.clientX,y:e.clientY}});
-stage.addEventListener('pointerup',e=>{if(!dragStart)return;const dx=e.clientX-dragStart.x;dragStart=null;if(Math.abs(dx)>45){overrideUntil=Date.now()+4000;tick()}});
-const shelf=document.getElementById('albumShelf');
-shelf?.addEventListener('click',()=>{overrideUntil=0;requestAnimationFrame(render)});
-window.addEventListener('load',tick);requestAnimationFrame(render);
-})();
+</script><script type="module" id="fy-three-gallery">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
+const host=document.getElementById('threeCanvasHost'),runway=document.getElementById('galleryRunway'),stage=document.getElementById('gallery3d');
+if(!host||!runway)throw Error('Gallery host missing');
+const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputColorSpace=THREE.SRGBColorSpace;host.appendChild(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color('#10271f');scene.fog=new THREE.FogExp2('#10271f',.018);
+const camera=new THREE.PerspectiveCamera(60,1,.1,150);camera.position.set(0,0,0);
+const group=new THREE.Group();scene.add(group);
+const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
+const vertex=`uniform float uForce;uniform float uTime;uniform float uHover;varying vec2 vUv;void main(){vUv=uv;vec3 p=position;float d=length(p.xy);p.z-=d*d*uForce*.055;p.z+=sin(p.x*3.+uTime*4.)*.07*uHover*smoothstep(-1.,1.,p.x);gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}`;
+const fragment=`uniform sampler2D uMap;uniform float uOpacity;uniform float uBlur;varying vec2 vUv;void main(){vec4 c=texture2D(uMap,vUv);if(uBlur>.01){vec4 sum=vec4(0.);float total=0.;for(int x=-2;x<=2;x++){for(int y=-2;y<=2;y++){vec2 off=vec2(float(x),float(y))*uBlur/vec2(768.,1024.);float w=1./(1.+length(off)*200.);sum+=texture2D(uMap,clamp(vUv+off,0.,1.))*w;total+=w;}}c=sum/total;}gl_FragColor=vec4(c.rgb,c.a*uOpacity);}`;
+let meshes=[],album=0,progress=0,target=0,position=0,velocity=0,manual=null,manualEnd=0,last=performance.now(),hover=-1,raf=0,visible=true;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function makeTexture(label,i){const c=document.createElement('canvas');c.width=768;c.height=1024;const x=c.getContext('2d');x.fillStyle='#f6f1e5';x.fillRect(0,0,768,1024);const colors=[['#496d60','#b4c6a6'],['#567987','#d5c8a8'],['#7d8769','#e3c9a6'],['#5d7b6b','#d9d2b7'],['#648b89','#b5c8af'],['#a08c71','#d9c2a2']];const p=colors[i%colors.length];const g=x.createLinearGradient(0,0,700,800);g.addColorStop(0,p[0]);g.addColorStop(1,p[1]);x.fillStyle=g;x.fillRect(30,30,708,820);x.strokeStyle='#ffffff55';x.lineWidth=7;for(let j=0;j<8;j++){x.beginPath();x.arc(380,420,j*60+35,0,Math.PI*2);x.stroke()}x.textAlign='center';x.font='190px serif';x.fillStyle='#ffffffb0';x.fillText(['✳','◇','▧','⌁','✦','☼'][i%6],384,510);x.textAlign='left';x.fillStyle='#30493c';x.font='bold 30px sans-serif';x.fillText('PHOTO '+String(i+1).padStart(2,'0'),40,912);x.font='bold 38px sans-serif';x.fillText(label,40,969,675);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t}
+function setAlbum(i){album=i;for(const m of meshes){group.remove(m);m.geometry.dispose();m.material.uniforms.uMap.value.dispose();m.material.dispose()}meshes=[];const names=albums[i].photos;names.forEach((name,j)=>{const material=new THREE.ShaderMaterial({side:THREE.DoubleSide,transparent:true,depthWrite:false,uniforms:{uMap:{value:makeTexture(name,j)},uOpacity:{value:1},uBlur:{value:0},uForce:{value:0},uTime:{value:0},uHover:{value:0}},vertexShader:vertex,fragmentShader:fragment});const mesh=new THREE.Mesh(new THREE.PlaneGeometry(3.6,4.8,24,24),material);mesh.userData.index=j;group.add(mesh);meshes.push(mesh)});manual=null;position=0;target=0;render()}
+function move(d){const n=meshes.length;if(!n)return;manual=clamp(Math.round(position)+d,0,n-1);manualEnd=performance.now()+5500;render()}
+function focus(i){manual=clamp(i,0,meshes.length-1);manualEnd=performance.now()+5500;render()}
+window.fyGallery={setAlbum,move,focus};
+function scroll(){const r=runway.getBoundingClientRect();progress=clamp(-r.top/Math.max(1,r.height-innerHeight),0,1);target=progress*Math.max(0,meshes.length-1);render()}
+function render(){if(!raf)raf=requestAnimationFrame(frame)}
+function frame(now){raf=0;if(!visible)return;const dt=Math.min((now-last)/1000,.05);last=now;const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;if(camera.aspect!==w/h){camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false)}
+if(manual!==null&&now>manualEnd)manual=null;const goal=manual===null?target:manual;const delta=goal-position;velocity+=(delta*32-velocity*10)*dt;position+=velocity*dt;
+const count=meshes.length;for(let i=0;i<count;i++){const m=meshes[i],d=i-position;const angle=i*2.618;const x=Math.sin(angle)*(1.4+(i%3)*1.2);const y=Math.cos(i*1.618)*(1.0+(i%2)*.9);m.position.set(x,y,-8-d*9);m.rotation.set(Math.sin(i)*.04,Math.sin(i*1.3)*.15,Math.sin(i*2)*.07);const near=clamp(1-Math.abs(d)/3,0,1);m.material.uniforms.uOpacity.value=near*near*(3-2*near);m.material.uniforms.uBlur.value=(1-near)*2.2;m.material.uniforms.uForce.value=clamp(velocity,-6,6);m.material.uniforms.uTime.value=now*.001;m.material.uniforms.uHover.value=hover===i?1:0;}
+camera.position.x+=(Math.sin(position*.8)*.55-camera.position.x)*.04;camera.position.y+=(Math.cos(position*.7)*.3-camera.position.y)*.04;camera.rotation.z=Math.sin(position*.8)*.012;
+renderer.render(scene,camera);const current=clamp(Math.round(position),0,count-1);galleryIndex=current;document.getElementById('galleryCount').textContent=String(current+1).padStart(2,'0')+' / '+String(count).padStart(2,'0');if(Math.abs(delta)>.001||Math.abs(velocity)>.001||hover>=0)render();}
+function hit(e){const r=renderer.domElement.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);raycaster.setFromCamera(mouse,camera);return raycaster.intersectObjects(meshes)[0]?.object?.userData?.index}
+renderer.domElement.addEventListener('pointermove',e=>{hover=hit(e)??-1;renderer.domElement.style.cursor=hover>=0?'pointer':'default';render()});
+renderer.domElement.addEventListener('click',e=>{const i=hit(e);if(i!==undefined)galleryPhotoClick(i)});
+stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();move(e.key==='ArrowRight'?1:-1)}});
+window.addEventListener('scroll',scroll,{passive:true});window.addEventListener('resize',render);
+const observer=new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible){last=performance.now();render()}},{rootMargin:'250px'});observer.observe(runway);
+openAlbum(0);scroll();
 </script></body></html>
