@@ -445,28 +445,25 @@ main>section.page:not(#home){isolation:isolate}
 @media(max-width:700px){#stories .book-track{height:390px!important}#stories .book-card{width:205px!important;height:310px!important;transform:translate(-50%,-50%) translateX(calc(var(--d) * 42vw)) rotateY(calc(var(--d) * -25deg)) scale(.85)!important}#stories .book-card[aria-current="true"]{transform:translate(-50%,-50%) scale(1)!important}}
 @media(prefers-reduced-motion:reduce){#stories .book-card{transition:none!important}}
 </style><style id="fy-real-page-turn">
-/* A flexible sheet made of narrow articulated strips, not one rigid rectangle. */
-#stories .book{position:relative;isolation:isolate;perspective:1900px}
-#stories .fy-curl{position:absolute;inset:0;z-index:16;pointer-events:none;perspective:1900px;overflow:visible}
-#stories .fy-curl-strip{position:absolute;top:0;height:100%;width:4.18%;transform-style:preserve-3d;backface-visibility:hidden;will-change:transform,opacity;transform-origin:center center;box-shadow:inset 1px 0 2px #8d80611b}
-#stories .fy-curl-strip .fy-paper-front,#stories .fy-curl-strip .fy-paper-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:linear-gradient(90deg,#f4edde,#fffdf6 55%,#eee5d6);border-top:1px solid #d8cebb;border-bottom:1px solid #d8cebb}
-#stories .fy-curl-strip .fy-paper-back{transform:rotateY(180deg);background:linear-gradient(90deg,#e8dfcf,#fffaf0 70%,#eee5d6)}
-#stories .fy-curl-strip:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#00000012,transparent 65%,#ffffff45);pointer-events:none}
-#stories .fy-curl-shadow{position:absolute;top:0;height:100%;width:50%;background:linear-gradient(90deg,#1b241b25,transparent 70%);opacity:0;animation:fyShade 1.35s ease-in-out both;pointer-events:none}
-#stories .fy-curl.forward .fy-curl-shadow{left:0}
-#stories .fy-curl.backward .fy-curl-shadow{right:0;transform:scaleX(-1)}
-@keyframes fyShade{0%,100%{opacity:0}45%,65%{opacity:1}}
-#stories .fy-curl.forward .fy-curl-strip{animation:fyCurlForward 1.35s cubic-bezier(.37,.02,.2,1) both;animation-delay:calc(var(--strip) * 13ms)}
-#stories .fy-curl.backward .fy-curl-strip{animation:fyCurlBackward 1.35s cubic-bezier(.37,.02,.2,1) both;animation-delay:calc(var(--strip) * 13ms)}
-@keyframes fyCurlForward{0%{transform:translateX(0) rotateY(0) translateZ(0);opacity:1}24%{transform:translateX(-12%) rotateY(-20deg) translateZ(16px)}49%{transform:translateX(-110%) rotateY(-76deg) translateZ(42px)}72%{transform:translateX(-480%) rotateY(-137deg) translateZ(19px)}100%{transform:translateX(-1150%) rotateY(-180deg) translateZ(0);opacity:0}}
-@keyframes fyCurlBackward{0%{transform:translateX(0) rotateY(0) translateZ(0);opacity:1}24%{transform:translateX(12%) rotateY(20deg) translateZ(16px)}49%{transform:translateX(110%) rotateY(76deg) translateZ(42px)}72%{transform:translateX(480%) rotateY(137deg) translateZ(19px)}100%{transform:translateX(1150%) rotateY(180deg) translateZ(0);opacity:0}}
-#stories .book.is-page-turning .leaf:last-child{transition:filter .35s;filter:brightness(.97)}
-#stories .page-control button:disabled{opacity:.35;cursor:default}
-@media(prefers-reduced-motion:reduce){#stories .fy-curl-strip,#stories .fy-curl-shadow{animation-duration:.01ms!important;animation-delay:0ms!important}}
+/* PageFlip uses a deforming canvas shadow and corner-driven page folding. */
+#stories .fy-book-engine{display:block!important;position:relative!important;width:100%;max-width:970px!important;min-height:530px!important;height:530px!important;margin:0 auto;perspective:none!important;transform-style:flat!important;filter:drop-shadow(10px 15px 12px #5b493b36)}
+#stories .fy-diary-flip{width:100%;height:530px;margin:auto}
+#stories .fy-diary-flip .stf__parent{margin:auto!important}
+#stories .fy-diary-sheet{background:#fffdf6;border:1px solid #e3dcca;position:relative;box-sizing:border-box;padding:clamp(18px,3.1vw,44px);overflow:hidden}
+#stories .fy-diary-sheet:after{content:"";position:absolute;inset:13px;border:1px solid #e9e5d8;pointer-events:none}
+#stories .fy-diary-left{background:linear-gradient(90deg,#fffdf6 86%,#e6decc)}
+#stories .fy-diary-right{background:linear-gradient(90deg,#e9e1d1,#fffdf6 7%)}
+#stories .fy-diary-sheet .journal-photo{height:235px;margin:16px 0 22px}
+#stories .fy-diary-sheet .journal-body{white-space:pre-line}
+#stories .fy-page-index{position:absolute;bottom:16px;right:24px;color:#a29a89;font-size:11px}
+#stories .fy-diary-error{padding:45px;text-align:center;color:#6d5343}
+#stories .real-book-cover{z-index:30}
+#stories .book.book-open .real-book-cover{pointer-events:none}
+@media(max-width:650px){#stories .fy-book-engine,#stories .fy-diary-flip{height:440px!important;min-height:440px!important}#stories .fy-diary-sheet{padding:14px}#stories .fy-diary-sheet .journal-photo{height:155px;margin:12px 0}#stories .fy-diary-sheet .hand{font-size:12px;line-height:1.6}#stories .fy-diary-sheet .section-title{font-size:18px}#stories .fy-diary-sheet .journal-body{font-size:11px;line-height:1.7}#stories .fy-diary-sheet .footnote{font-size:9px}}
 </style></head><body><header><button class="brand" onclick="go('home')"><span class="symbol">◇</span><span>豐譽實習探索誌<small>C&C INTERNSHIP EXPLORER</small></span></button><nav class="nav" id="nav"></nav><button class="menu" onclick="toggleMenu()" aria-label="開啟選單">☰ 選單</button><div class="mobile-nav" id="mobileNav"></div></header><main>
 <section id="home" class="page active"><div class="home"><img class="desk" onclick="openCoverScene()" title="點擊封面進入 3D 探索誌" style="cursor:pointer" src="assets/desk.png" alt="建築工作桌上的藍圖、日記、相機、照片、信封與便條紙"><button class="spot s1" onclick="go('work')"><span>現場探索</span></button><button class="spot s2" onclick="go('stories')"><span>現場故事</span></button><button class="spot s3" onclick="go('vlog')"><span>實習日常 Vlog</span></button><button class="spot s4" onclick="go('photos')"><span>實習相簿</span></button><button class="spot s5" onclick="go('join')"><span>實習招募</span></button><button class="spot s6" onclick="go('notes')"><span>留下一頁</span></button><button class="spline-entry" onclick="openCoverScene()" type="button">✦ 開啟 3D 探索誌</button><div class="home-hint">點擊桌上的物件，翻開故事 ↗</div><div class="mobile-home"><div class="eyebrow">C&C INTERNSHIP EXPLORER</div><h1 class="chapter-title">豐譽<br>實習探索誌</h1><p class="intro">翻開日記，探索那些課本以外的現場故事。</p><div class="mobile-cover"></div><div class="mobile-grid" id="mobileGrid"></div></div></div></section>
 <section id="work" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 01 · BLUEPRINT</div><h1 class="chapter-title">同一座工地，<br>不只一種視角。</h1><p class="intro">施工、品管、職安、規劃。四種專業，四種觀察現場的方法。選一個區域，展開你的工程藍圖。</p></div><div class="chapter-index">01</div></div><div class="workbench"><div class="plan"><div class="plan-grid" id="zones"></div></div></div><div class="blueprint-detail" id="workDetail" aria-live="polite"></div><p class="footnote">＊各組工作內容為體驗方向示意，實際任務會依工程階段、工地安排及帶領人員調整。</p><div class="next"><button onclick="go('home')">← 返回探索桌</button><button onclick="go('stories')">下一章 · 現場故事 →</button></div></div></section>
-<section id="stories" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 02 · FIELD NOTES</div><h1 class="chapter-title">現場故事，<br>寫在日記裡。</h1><p class="intro">第一次走進現場的緊張、逐漸理解專業的驚喜，還有那些沒寫進工作說明的日常。翻一頁，聽一段故事。</p></div><div class="chapter-index">02</div></div><div class="journal-desk"><div class="book" id="book"><button type="button" class="real-book-cover" id="realBookCover" aria-label="翻開日記" onclick="openRealDiary()"><span>FIELD JOURNAL<small>C&C · 2026 SUMMER</small><em>點擊翻開日記 ↗</em></span></button><div class="leaf"><div class="eyebrow">C&C · SUMMER FIELD JOURNAL</div><div class="journal-photo" id="diaryIcon">✎</div><div class="hand" id="diaryCaption"></div><p class="notice">現場觀察 · 實習紀錄</p></div><div class="leaf"><div class="eyebrow" id="diaryIndex"></div><h2 id="diaryTitle" class="section-title"></h2><p id="diaryText" class="journal-body"></p><p class="footnote">＊目前使用編輯示意文字，正式刊登需替換為取得同意的實習生真實分享。</p></div></div><div class="page-control"><button class="btn" onclick="flip(-1)" id="prevDiary">← 上一頁</button><span id="pageNum"></span><button class="btn" onclick="flip(1)" id="nextDiary">下一頁 →</button></div></div><div class="next"><button onclick="go('work')">← 現場探索</button><button onclick="go('vlog')">下一章 · 實習日常 Vlog →</button></div></div></section>
+<section id="stories" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 02 · FIELD NOTES</div><h1 class="chapter-title">現場故事，<br>寫在日記裡。</h1><p class="intro">第一次走進現場的緊張、逐漸理解專業的驚喜，還有那些沒寫進工作說明的日常。翻一頁，聽一段故事。</p></div><div class="chapter-index">02</div></div><div class="journal-desk"><div class="book fy-book-engine" id="book"><button type="button" class="real-book-cover" id="realBookCover" aria-label="翻開日記" onclick="openRealDiary()"><span>FIELD JOURNAL<small>C&C · 2026 SUMMER</small><em>點擊翻開日記 ↗</em></span></button><div id="fyDiaryFlip" class="fy-diary-flip" aria-label="實習故事日記"></div><div id="fyDiaryError" class="fy-diary-error" hidden>日記翻頁元件載入失敗，請重新整理頁面。</div></div><div class="page-control"><button class="btn" onclick="flip(-1)" id="prevDiary">← 上一頁</button><span id="pageNum"></span><button class="btn" onclick="flip(1)" id="nextDiary">下一頁 →</button></div></div><div class="next"><button onclick="go('work')">← 現場探索</button><button onclick="go('vlog')">下一章 · 實習日常 Vlog →</button></div></div></section>
 <section id="vlog" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 03 · VIDEO DIARY</div><h1 class="chapter-title">今天，工地<br>發生了什麼？</h1><p class="intro">工作有認真的一面，也有忍不住笑出來的瞬間。把鏡頭交給實習生，看看他們眼中的每一天。</p></div><div class="chapter-index">03</div></div><div class="film-strip"><div class="feature-screen"><button class="play" onclick="showVideo(0)" aria-label="觀看實習生快問快答">▶</button></div><div><div class="eyebrow">FEATURED · 2026 SUMMER</div><h2 class="section-title">實習生快問快答</h2><p class="intro">工地裡最常聽到的一句話？實習後最大的改變？那些意想不到的答案，都在這裡。</p><button class="btn" onclick="showVideo(0)">打開影像日誌 ↗</button></div></div><div class="category" id="videoFilters"></div><div class="film-grid" id="filmGrid"></div><p class="footnote">＊目前為影片目錄示意，尚未嵌入正式影片。可於程式中的影片資料填入已授權的 YouTube 網址。</p><div class="next"><button onclick="go('stories')">← 現場故事</button><button onclick="go('photos')">下一章 · 實習相簿 →</button></div></div></section>
 <section id="photos" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 04 · PHOTO JOURNAL</div><h1 class="chapter-title">那些被留下的瞬間。</h1><p class="intro">每一梯次，都有一段自己的故事。往下滑，讓鏡頭帶你走進實習的每個瞬間；也可以切換不同梯次的故事。</p></div><div class="chapter-index">04</div></div><div id="albumList"><div class="album-shelf" id="albumShelf"></div></div><div id="albumView"><div class="gallery-kicker">PHOTO JOURNAL · MOMENTS IN MOTION</div><h2 class="section-title" id="albumHeading"></h2><p class="intro" id="albumDesc"></p><p class="footnote">滑動瀏覽每一梯次的現場片段，將來可替換成經授權的實習照片。</p></div><div class="next"><button onclick="go('vlog')">← 實習日常 Vlog</button><button onclick="go('join')">下一章 · 實習招募 →</button></div></div></section>
 <section id="join" class="page"><div class="wrap"><div class="chapter-top"><div><div class="eyebrow">CHAPTER 05 · AN INVITATION</div><h1 class="chapter-title">下一篇故事，<br>換你來寫。</h1><p class="intro">如果你也想走進現場，這裡有一封留給你的邀請函。</p></div><div class="chapter-index">05</div></div><div class="envelope-stage"><div class="eyebrow">A LETTER FOR YOUR NEXT CHAPTER</div><h2 class="section-title">點擊信封，拆開邀請</h2><button class="envelope" id="envelope" onclick="openLetter()" aria-label="打開實習招募邀請函"><span class="seal">◇</span></button><div class="letter" id="letter"><div class="eyebrow">DEAR FUTURE INTERN</div><h2>歡迎，未來的現場夥伴。</h2><p class="intro">每一段實習，都從好奇開始。這封信整理了你可能想知道的事，也留了一個保持聯繫的位置。</p><div class="letter-info"><div><b>實習期間</b>依當期公告</div><div><b>實習地點</b>依當期工程處及工地安排</div><div><b>申請資格</b>依當期實習招募條件</div><div><b>實習待遇</b>依當期正式招募資訊</div></div><p class="notice">正式招募資訊與申請連結尚待設定，請勿將本頁視為當期職缺公告。</p><h3 class="section-title">還在了解？先留下聯絡資訊</h3><p class="intro">以下表單目前僅供測試介面，尚未連接資料接收系統。</p><form class="lead" onsubmit="demoForm(event)"><label class="field">姓名 *<input required name="name" placeholder="你的姓名"></label><label class="field">電子郵件 *<input required name="email" type="email" placeholder="example@email.com"></label><label class="field">學校<input name="school" placeholder="就讀學校"></label><label class="field">科系<input name="department" placeholder="就讀科系"></label><label class="field">目前年級<select name="grade"><option>請選擇</option><option>大一</option><option>大二</option><option>大三</option><option>大四</option><option>研究所</option><option>其他</option></select></label><div class="field">感興趣的方向<div class="checks"><label><input type="checkbox">施工</label><label><input type="checkbox">品管</label><label><input type="checkbox">職安</label><label><input type="checkbox">規劃</label></div></div><label class="field wide">想對我們說的話<textarea rows="3" placeholder="你想了解什麼？"></textarea></label><label class="field wide"><span><input required type="checkbox"> 我了解此為測試表單，目前不會傳送或儲存資料。</span></label><div class="field wide"><button class="btn solid" type="submit">測試填寫完成 →</button></div></form></div></div><div class="next"><button onclick="go('photos')">← 實習相簿</button><button onclick="go('notes')">下一章 · 留下一頁 →</button></div></div></section>
@@ -482,37 +479,49 @@ const teams=[{title:'施工',en:'CONSTRUCTION',sub:'讓圖面上的想像，成�
   });
  });
 }renderTeams();
-const diaries=[{title:'第一次走進工地',icon:'⌁',caption:'「原來工程現場，比想像中更有秩序。」',text:'剛開始還不太知道自己能做什麼，只能努力記住大家說的每個專有名詞。\n\n慢慢跟著學長姐走過現場，才發現一棟建築背後，有好多課本裡看不到的細節。'},{title:'有問題，就勇敢問',icon:'✎',caption:'「有人願意教，學習就有了方向。」',text:'有時候一個看似簡單的問題，背後其實連著好幾個工序。\n\n跟著學長姐重新看圖、回到現場確認，才開始理解：實習不是什麼都要會，而是學會怎麼觀察與提問。'},{title:'開始想像未來',icon:'◇',caption:'「從認識工作，到開始想像自己的位置。」',text:'實習結束前再回頭看，最不一樣的也許不是學會了多少名詞。\n\n而是原本模糊的職涯方向，開始有了真實的畫面。'}];let diary=0,diaryTurning=false;
-function renderDiary(){const d=diaries[diary];document.getElementById('diaryIcon').textContent=d.icon;document.getElementById('diaryCaption').textContent=d.caption;document.getElementById('diaryIndex').textContent='ENTRY 0'+(diary+1)+' / 2026 SUMMER';document.getElementById('diaryTitle').textContent=d.title;document.getElementById('diaryText').textContent=d.text;document.getElementById('pageNum').textContent='0'+(diary+1)+' / 0'+diaries.length;document.getElementById('prevDiary').disabled=diaryTurning||diary===0;document.getElementById('nextDiary').disabled=diaryTurning||diary===diaries.length-1}
+const diaries=[{title:'第一次走進工地',icon:'⌁',caption:'「原來工程現場，比想像中更有秩序。」',text:'剛開始還不太知道自己能做什麼，只能努力記住大家說的每個專有名詞。\n\n慢慢跟著學長姐走過現場，才發現一棟建築背後，有好多課本裡看不到的細節。'},{title:'有問題，就勇敢問',icon:'✎',caption:'「有人願意教，學習就有了方向。」',text:'有時候一個看似簡單的問題，背後其實連著好幾個工序。\n\n跟著學長姐重新看圖、回到現場確認，才開始理解：實習不是什麼都要會，而是學會怎麼觀察與提問。'},{title:'開始想像未來',icon:'◇',caption:'「從認識工作，到開始想像自己的位置。」',text:'實習結束前再回頭看，最不一樣的也許不是學會了多少名詞。\n\n而是原本模糊的職涯方向，開始有了真實的畫面。'}];let diary=0,diaryTurning=false,diaryFlip=null;
+function renderDiary(){
+ const indicator=document.getElementById('pageNum');
+ if(indicator)indicator.textContent='0'+(diary+1)+' / 0'+diaries.length;
+ document.getElementById('prevDiary').disabled=diaryTurning||diary===0;
+ document.getElementById('nextDiary').disabled=diaryTurning||diary===diaries.length-1;
+}
 function openRealDiary(){document.getElementById('book').classList.add('book-open')}
 function flip(direction){
- const next=diary+direction;
- if(diaryTurning||next<0||next>=diaries.length)return;
- const book=document.getElementById('book');
- book.classList.add('book-open','is-page-turning');
+ if(!diaryFlip||diaryTurning)return;
+ if(direction>0&&diary>=diaries.length-1)return;
+ if(direction<0&&diary<=0)return;
+ openRealDiary();
  diaryTurning=true;renderDiary();
- const curl=document.createElement('div');
- const forward=direction>0;
- curl.className='fy-curl '+(forward?'forward':'backward');
- const count=24;
- const strips=Array.from({length:count},(_,i)=>{
-  const strip=document.createElement('div');
-  strip.className='fy-curl-strip';
-  strip.style.setProperty('--strip',i);
-  strip.style.left=(forward?50+i*50/count:(count-1-i)*50/count)+'%';
-  strip.innerHTML='<div class="fy-paper-front"></div><div class="fy-paper-back"></div>';
-  return strip;
- });
- const shadow=document.createElement('div');shadow.className='fy-curl-shadow';
- curl.append(shadow,...strips);book.appendChild(curl);
- const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
- const duration=reduced?30:1650;
- let switched=false,finished=false;
- const swap=()=>{if(switched)return;switched=true;diary=next;renderDiary()};
- const finish=()=>{if(finished)return;finished=true;swap();curl.remove();book.classList.remove('is-page-turning');diaryTurning=false;renderDiary()};
- setTimeout(swap,duration*.55);
- setTimeout(finish,duration);
+ if(direction>0)diaryFlip.flipNext('bottom');else diaryFlip.flipPrev('bottom');
+ setTimeout(()=>{diaryTurning=false;renderDiary()},1150);
 }
+function initDiaryFlip(){
+ const mount=document.getElementById('fyDiaryFlip');
+ if(!mount||diaryFlip)return;
+ if(!window.St||!window.St.PageFlip){document.getElementById('fyDiaryError').hidden=false;return}
+ const escapeHTML=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const pages=diaries.flatMap((d,i)=>[
+ '<div class="fy-diary-sheet fy-diary-left"><div class="eyebrow">C&C · SUMMER FIELD JOURNAL</div><div class="journal-photo">'+escapeHTML(d.icon)+'</div><div class="hand">'+escapeHTML(d.caption)+'</div><p class="notice">現場觀察 · 實習紀錄</p><span class="fy-page-index">0'+(i+1)+'</span></div>',
+ '<div class="fy-diary-sheet fy-diary-right"><div class="eyebrow">ENTRY 0'+(i+1)+' / 2026 SUMMER</div><h2 class="section-title">'+escapeHTML(d.title)+'</h2><p class="journal-body">'+escapeHTML(d.text)+'</p><p class="footnote">＊目前使用編輯示意文字，正式刊登需替換為取得同意的實習生真實分享。</p><span class="fy-page-index">0'+(i+1)+'</span></div>'
+ ]);
+ mount.innerHTML=pages.join('');
+ try{
+ diaryFlip=new St.PageFlip(mount,{width:480,height:530,size:'stretch',minWidth:230,maxWidth:480,minHeight:420,maxHeight:530,showCover:false,usePortrait:false,flippingTime:1050,drawShadow:true,maxShadowOpacity:.48,autoSize:true,mobileScrollSupport:true,swipeDistance:35,clickEventForward:false,disableFlipByClick:false});
+ diaryFlip.loadFromHTML(mount.querySelectorAll('.fy-diary-sheet'));
+ diaryFlip.on('flip',e=>{diary=Math.min(diaries.length-1,Math.max(0,Math.floor(e.data/2)));diaryTurning=false;renderDiary()});
+ diaryFlip.on('changeState',e=>{diaryTurning=e.data==='flipping';renderDiary()});
+ renderDiary();
+ }catch(err){console.error('PageFlip initialization failed',err);document.getElementById('fyDiaryError').hidden=false}
+}
+(function loadDiaryEngine(){
+ if(window.St&&window.St.PageFlip){initDiaryFlip();return}
+ const script=document.createElement('script');
+ script.src='https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js';
+ script.onload=initDiaryFlip;
+ script.onerror=()=>{document.getElementById('fyDiaryError').hidden=false};
+ document.head.appendChild(script);
+})();
 renderDiary();
 const videos=[{title:'實習生快問快答',category:'快問快答',icon:'▶',desc:'從工地日常到最真實的回答'},{title:'我的工地一天',category:'工作日常',icon:'▣',desc:'跟著鏡頭走過一天'},{title:'實習後的改變',category:'人物訪談',icon:'✳',desc:'重新認識工作與自己'},{title:'現場小花絮',category:'工作日常',icon:'◈',desc:'那些意想不到的小瞬間'},{title:'學長姐怎麼說',category:'人物訪談',icon:'✎',desc:'從帶領者視角看實習'},{title:'我們的交流日',category:'工作日常',icon:'☼',desc:'一起走出自己的工地'}];let videoFilter='全部';function renderVideos(){let cats=['全部','快問快答','工作日常','人物訪談'];document.getElementById('videoFilters').innerHTML=cats.map(c=>`<button class="${videoFilter===c?'active':''}" onclick="videoFilter='${c}';renderVideos()">${c}</button>`).join('');document.getElementById('filmGrid').innerHTML=videos.map((v,i)=>({...v,i})).filter(v=>videoFilter==='全部'||v.category===videoFilter).map(v=>`<button class="film" onclick="showVideo(${v.i})"><div class="still">${v.icon}</div><strong>${v.title}</strong><small>${v.category} · ${v.desc}</small></button>`).join('')}renderVideos();function showVideo(i){let v=videos[i];showDialog(v.title,'影片尚未接入。正式版可將這裡改為 YouTube 嵌入播放器，並搭配已授權的封面與說明。',v.icon)}
 const albums=[{title:'2026 暑期實習',sub:'SUMMER INTERNSHIP',desc:'從初次進場、現場學習，到各地交流的夏日記錄。',photos:['初次走進現場','跟著學長姐學習','工地裡的日常','跨工地交流','參訪與分享','實習的最後一天']},{title:'2026 學期實習',sub:'SEMESTER INTERNSHIP',desc:'用更長的時間，陪伴一段工程與自己的成長。',photos:['學期的起點','每天的現場','學習筆記','團隊合作','逐漸上手','留下合照']}];document.getElementById('albumShelf').innerHTML=albums.map((a,i)=>`<button class="album" onclick="openAlbum(${i})"><div class="album-cover"><b>${i===0?'夏':'學'}</b></div><h3>${a.title} ↗</h3><small>${a.sub}</small></button>`).join('');let galleryIndex=0;
